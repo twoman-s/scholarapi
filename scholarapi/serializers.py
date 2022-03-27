@@ -13,7 +13,7 @@ class CollegeSerializer(serializers.ModelSerializer):
     class Meta:
         model = College
         fields = "__all__"
-        # depth = 1
+        depth = 1
 
 
 class Candidateserializer(serializers.ModelSerializer):
