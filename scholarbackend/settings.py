@@ -109,6 +109,15 @@ CLOUDINARY_STORAGE = {
 }
 
 CLOUDINARY_URL = config('CLOUDINARY_URL')
+if(DEBUG == False):
+    # CLOUDINARY_STORAGE = {
+    # 'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    # 'API_KEY': os.environ.get('CLOUD_API_KEY'),
+    # 'API_SECRET': os.environ.get('CLOUD_API_SECRET')
+    # }
+
+    CLOUDINARY_URL = os.environ.get('CLOUDINARY_URL')
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
