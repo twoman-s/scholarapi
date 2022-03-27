@@ -5,8 +5,6 @@ from django.db import models
 
 class Course(models.Model):
     name = models.CharField(max_length=250, verbose_name="Course Name")
-    semesters = models.CharField(max_length=250)
-    fees = models.IntegerField(default=0, verbose_name="Course Fee")
 
     def __str__(self):
         return self.name
@@ -14,13 +12,14 @@ class Course(models.Model):
 
 class College(models.Model):
     name = models.CharField(max_length=250, verbose_name="College Name")
-    place = models.CharField(max_length=250)
-    phone = models.IntegerField(default=0)
-    address = models.CharField(max_length=350)
-    email = models.EmailField(
-        max_length=250, unique=True, blank=True, null=True)
-    courses = models.ManyToManyField(Course, default="")
-    fee_brochure = models.FileField(upload_to="fees/", null=True)
+    place = models.CharField(max_length=250, verbose_name="Location")
+    address = models.CharField(max_length=350, verbose_name="Address")
+    affiliated_university = models.CharField(
+        max_length=200, verbose_name="Affiliated University", default='')
+    courses = models.ManyToManyField(
+        Course, default="", verbose_name="Available Courses")
+    fee_brochure = models.FileField(
+        upload_to="fees/", null=True, verbose_name="Fees Brochure")
 
     def __str__(self):
         return self.name
