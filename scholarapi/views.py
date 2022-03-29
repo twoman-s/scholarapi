@@ -24,7 +24,7 @@ class CollegeViewSet(viewsets.ModelViewSet):
     serializer_class = CollegeSerializer
 
     def get_queryset(self):
-        queryset = College.objects.all()
+        queryset = College.objects.all().order_by('name')
         return queryset
 
     def retrieve(self, request, *args, **kwargs):
@@ -44,10 +44,12 @@ class CandidateViewSet(viewsets.ModelViewSet):
 def searchViewSet(request, keyword):
     college_serializer_class = CollegeSerializer
     course_serializer_class = CourseSerializer
-    college = College.objects.filter(courses__name__icontains=keyword)
+    college = College.objects.filter(
+        courses__name__icontains=keyword).order_by('name')
     college_serializer = college_serializer_class(college, many=True)
     course = Course.objects.filter(name__icontains=keyword)
-    course_serializer = course_serializer_class(course, many=True)
+    course_serializer = course_serializer_class(
+        course, many=True).order_by('name')
     res = {'colleges': college_serializer.data,
            'courses': course_serializer.data}
     return Response(res, headers={"Access-Control-Allow-Origin": "*"})
@@ -56,6 +58,6 @@ def searchViewSet(request, keyword):
 @api_view(['GET', 'POST', 'HEAD'])
 def getCollegewithCourse(request, pk):
     college_serializer_class = CollegeSerializer
-    college = College.objects.filter(courses__id=pk)
+    college = College.objects.filter(courses__id=pk).order_by('name')
     college_serializer = college_serializer_class(college, many=True)
     return Response(college_serializer.data, headers={"Access-Control-Allow-Origin": "*"})
