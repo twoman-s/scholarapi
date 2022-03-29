@@ -9,7 +9,7 @@ from .serializers import *
 
 
 class CourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by('name')
     serializer_class = CourseSerializer
 
     def retrieve(self, request, *args, **kwargs):
