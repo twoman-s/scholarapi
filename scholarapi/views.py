@@ -47,9 +47,9 @@ def searchViewSet(request, keyword):
     college = College.objects.filter(
         courses__name__icontains=keyword).order_by('name')
     college_serializer = college_serializer_class(college, many=True)
-    course = Course.objects.filter(name__icontains=keyword)
+    course = Course.objects.filter(name__icontains=keyword).order_by('name')
     course_serializer = course_serializer_class(
-        course, many=True).order_by('name')
+        course, many=True)
     res = {'colleges': college_serializer.data,
            'courses': course_serializer.data}
     return Response(res, headers={"Access-Control-Allow-Origin": "*"})
