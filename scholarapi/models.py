@@ -18,6 +18,8 @@ class College(models.Model):
         max_length=200, verbose_name="Affiliated University", default='')
     courses = models.ManyToManyField(
         Course, default="", verbose_name="Available Courses")
+    college_image = models.FileField(
+        upload_to="colleges/", null=True, verbose_name="College Image")
     fee_brochure = models.FileField(
         upload_to="fees/", null=True, verbose_name="Fees Brochure")
 
