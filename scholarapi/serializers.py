@@ -21,3 +21,10 @@ class Candidateserializer(serializers.ModelSerializer):
         model = Applicant
         fields = "__all__"
         # depth = 1
+
+
+class CarouselSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Carousel
+        fields = "__all__"
+        depth = 1

@@ -40,3 +40,11 @@ class Applicant(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+
+class Carousel(models.Model):
+    carousel_image = models.FileField(
+        upload_to="carousels/", null=True, verbose_name="Carousel Image")
+    carousel_heading = models.CharField(max_length=500, verbose_name="Heading")
+    carousel_description = models.CharField(
+        max_length=500, verbose_name="Description")

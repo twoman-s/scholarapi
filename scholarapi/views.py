@@ -40,6 +40,11 @@ class CandidateViewSet(viewsets.ModelViewSet):
     serializer_class = Candidateserializer
 
 
+class CarouselViewSet(viewsets.ModelViewSet):
+    queryset = Carousel.objects.all()
+    serializer_class = CarouselSerializer
+
+
 @api_view(['GET', 'POST', 'HEAD'])
 def searchViewSet(request, keyword):
     college_serializer_class = CollegeSerializer
