@@ -7,6 +7,7 @@ router = DefaultRouter()
 router.register("api/getcolleges", CollegeViewSet, basename="getcolleges")
 router.register("api/getcourses", CourseViewSet, basename="getcourses")
 router.register("api/getcandidate", CandidateViewSet, basename="getcandidates")
+router.register("api/getcarousels", CarouselViewSet, basename="getcarousels")
 # router.register("api/search", SearchViewSet, basename="search")
 
 urlpatterns = [
